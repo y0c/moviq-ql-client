@@ -1,10 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { ApolloProvider } from "react-apollo";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./Home";
+import client from "./apollo";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-      </div>
+      <ApolloProvider client={client}>
+        <div className="App">
+          <Router>
+            <div>
+              <Route exact path="/" render={() => <Home />} />
+              <Route path="/details" render={() => <div>Details</div>} />
+            </div>
+          </Router>
+        </div>
+      </ApolloProvider>
     );
   }
 }
