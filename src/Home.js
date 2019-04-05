@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { HOME_PAGE } from "./queries";
 import { Query } from "react-apollo";
 
@@ -10,9 +11,11 @@ const Home = () => (
       if (error) return <span>some error</span>;
 
       return data.movies.map(movie => (
-        <h2 key={movie.id}>
-          {movie.title} / {movie.rating}
-        </h2>
+        <Link to={`/details/${movie.id}`}>
+          <h2 key={movie.id}>
+            {movie.title} / {movie.rating}
+          </h2>
+        </Link>
       ));
     }}
   </Query>

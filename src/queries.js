@@ -10,4 +10,19 @@ const HOME_PAGE = gql`
   }
 `;
 
-export { HOME_PAGE };
+const DETAIL_PAGE = gql`
+  query getMovieDetail($movieId: Int!) {
+    movie(movieId: $movieId) {
+      title
+      rating
+      description_full
+    }
+    suggestion(movieId: $movieId) {
+      id
+      title
+      rating
+      description_full
+    }
+  }
+`;
+export { HOME_PAGE, DETAIL_PAGE };
